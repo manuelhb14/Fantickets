@@ -1,4 +1,9 @@
+'use client'
+
 import './globals.css'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import { DataProvider } from './context/DataProvider';
 
 export const metadata = {
   title: 'Create Next App',
@@ -8,7 +13,23 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <DataProvider>
+        <body>
+          {children}
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </body>
+      </DataProvider>
     </html>
   )
 }
